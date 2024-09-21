@@ -1,0 +1,21 @@
+<!-- videos/templates/videos/detail.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Video Detail{% endblock %}
+
+{% block content %}
+<h2>{{ video.title }}</h2>
+
+<video controls width="600">
+    <source src="{{ video.video_file.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<h3>Subtitles:</h3>
+<ul>
+    {% for subtitle in subtitles %}
+        <li>{{ subtitle.language }}: {{ subtitle.subtitle_file|linebreaks }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

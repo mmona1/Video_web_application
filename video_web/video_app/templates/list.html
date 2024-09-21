@@ -1,0 +1,14 @@
+<!-- videos/templates/videos/list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}List of Videos{% endblock %}
+
+{% block content %}
+<h2>List of Videos</h2>
+<ul>
+    {% for video in videos %}
+        <li><a href="{% url 'video_detail' video.id %}">{{ video.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!-- video_app/templates/videos/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Video Upload Site{% endblock %}</title>
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'video_upload_view' %}">Upload Video</a></li>
+            <li><a href="{% url 'video_list_view' %}">List of Videos</a></li>
+            <li><a href="{% url 'video_detail_view' %}">video details</a></li>
+            <li><a href="{% url 'search_subtitle' %}">Search Subtitles</a></li>
+        </ul>
+    </nav> 
+
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}
+        <div class="row"></div>
+            <div class="col-md-6 offset-md-3">
+                <h2>Upload Video</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+        
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Video Upload Platform</p>
+    </footer>
+
+</body>
+</html>
